@@ -2,7 +2,7 @@
 $env:GOOS = "linux"
 $env:GOARCH = "amd64"
 
-$deployIP = "192.168.18.190" # Edit this
+$deployIP = "192.168.18.137" # Edit this
 
 go build -C ./gameserverManager -o ../Narwhal
 
