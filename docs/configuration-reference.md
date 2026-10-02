@@ -1,4 +1,4 @@
-The configuration file has to be named mgr.env and needs to be placed in Narwhal's installation directory
+The configuration file has to be named mgr.env and needs to be placed in `/home/gameserver/mgr.env`
 
 | Variable                 	| Required 	| Description                                                                              	| Example                                  	|
 |--------------------------	|----------	|------------------------------------------------------------------------------------------	|------------------------------------------	|

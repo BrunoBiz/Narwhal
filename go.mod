@@ -1,4 +1,4 @@
-module example/Narwhal
+module github.com/BrunoBiz/Narwhal
 
 go 1.26
 

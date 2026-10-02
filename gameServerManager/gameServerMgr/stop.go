@@ -3,12 +3,13 @@ package gameservermgr
 import (
 	"context"
 	"errors"
-	"example/Narwhal/gameServerManager/logger"
 	"fmt"
 	"log/slog"
 	"os/exec"
 	"strings"
 	"time"
+
+	"github.com/BrunoBiz/Narwhal/gameServerManager/logger"
 )
 
 func (gameServer *GameServer) stop() ReturnValue {

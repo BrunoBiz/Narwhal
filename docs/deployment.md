@@ -36,7 +36,7 @@ The container uses **Debian 13**.
 
 From the Proxmox host, access the newly created container:
 
-`pct enter`
+`pct enter <VMID>`
 
 Install the required dependencies. For example:
 

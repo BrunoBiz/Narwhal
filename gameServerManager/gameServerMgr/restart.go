@@ -2,8 +2,9 @@ package gameservermgr
 
 import (
 	"context"
-	"example/Narwhal/gameServerManager/logger"
 	"log/slog"
+
+	"github.com/BrunoBiz/Narwhal/gameServerManager/logger"
 )
 
 func (gameServer *GameServer) restart() ReturnValue {

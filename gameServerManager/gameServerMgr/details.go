@@ -2,10 +2,11 @@ package gameservermgr
 
 import (
 	"context"
-	"example/Narwhal/gameServerManager/logger"
 	"log/slog"
 	"os/exec"
 	"strings"
+
+	"github.com/BrunoBiz/Narwhal/gameServerManager/logger"
 )
 
 func (gameServer *GameServer) details() ReturnValue {

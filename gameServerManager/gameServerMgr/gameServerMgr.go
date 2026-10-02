@@ -3,9 +3,10 @@ package gameservermgr
 import (
 	"context"
 	"errors"
-	"example/Narwhal/gameServerManager/logger"
-	"example/Narwhal/gameServerManager/util"
 	"log/slog"
+
+	"github.com/BrunoBiz/Narwhal/gameServerManager/logger"
+	"github.com/BrunoBiz/Narwhal/gameServerManager/util"
 )
 
 type GameServer struct {
