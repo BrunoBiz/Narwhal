@@ -88,7 +88,7 @@ At this point, the deployment should be ready.
 
 Run Narwhal manually:
 
-`./Narwhal Start`
+`./Narwhal start`
 
 Verify that the game server starts successfully and that Narwhal reports the expected status.
 
