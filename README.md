@@ -450,7 +450,7 @@ Narwhal/
 A REST API for retrieving information from a Proxmox environment and
 orchestrating game servers running inside its LXC containers.
 
-[github.com/BrunoBiz/Go-PM-API](https://github.com/BrunoBiz/Go-PM-API)
+[github.com/BrunoBiz/Orcha](https://github.com/BrunoBiz/Orcha)
 
 ## License
 
