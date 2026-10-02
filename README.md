@@ -39,7 +39,7 @@ while Narwhal handles how those operations are performed for the configured
 server.
 
 This is particularly useful when Narwhal is invoked remotely by an orchestration
-system such as [Orcha](https://github.com/BrunoBiz/Go-PM-API).
+system such as [Orcha](https://github.com/BrunoBiz/Orcha).
 
 ## Features
 
@@ -371,7 +371,7 @@ environment.
 ## Integration with Orcha
 
 Narwhal can operate as a standalone CLI, but it was built to complement
-[Orcha](https://github.com/BrunoBiz/Go-PM-API), a Go-based Proxmox
+[Orcha](https://github.com/BrunoBiz/Orcha), a Go-based Proxmox
 orchestration API.
 
 The two projects have separate responsibilities:
