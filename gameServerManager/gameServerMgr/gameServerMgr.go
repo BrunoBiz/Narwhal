@@ -3,8 +3,8 @@ package gameservermgr
 import (
 	"context"
 	"errors"
-	"example/Go-CLI-Manager/gameServerManager/logger"
-	"example/Go-CLI-Manager/gameServerManager/util"
+	"example/Narwhal/gameServerManager/logger"
+	"example/Narwhal/gameServerManager/util"
 	"log/slog"
 )
 

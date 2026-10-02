@@ -2,9 +2,9 @@ package main
 
 import (
 	"context"
-	gameservermgr "example/Go-CLI-Manager/gameServerManager/gameServerMgr"
-	"example/Go-CLI-Manager/gameServerManager/logger"
-	"example/Go-CLI-Manager/gameServerManager/util"
+	gameservermgr "example/Narwhal/gameServerManager/gameServerMgr"
+	"example/Narwhal/gameServerManager/logger"
+	"example/Narwhal/gameServerManager/util"
 	"log/slog"
 	"os"
 )

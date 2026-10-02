@@ -1,4 +1,4 @@
-module example/Go-CLI-Manager
+module example/Narwhal
 
 go 1.26
 

@@ -2,7 +2,7 @@ package gameservermgr
 
 import (
 	"context"
-	"example/Go-CLI-Manager/gameServerManager/logger"
+	"example/Narwhal/gameServerManager/logger"
 	"log/slog"
 )
 
