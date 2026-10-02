@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+        <html>
+        <head>
+            <meta charset="UTF-8">
+            <title>&ast;&ast;Use Case &mdash; Deployment of Narwhal&ast;&ast;</title>
+            <style>
+/* From extension vscode.github */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+.vscode-dark img[src$=\#gh-light-mode-only],
+.vscode-light img[src$=\#gh-dark-mode-only],
+.vscode-high-contrast:not(.vscode-high-contrast-light) img[src$=\#gh-light-mode-only],
+.vscode-high-contrast-light img[src$=\#gh-dark-mode-only] {
+	display: none;
+}
+
+</style>
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
+<link href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+.task-list-item {
+    list-style-type: none;
+}
+
+.task-list-item-checkbox {
+    margin-left: -20px;
+    vertical-align: middle;
+    pointer-events: none;
+}
+</style>
+<style>
+:root {
+  --color-note: #0969da;
+  --color-tip: #1a7f37;
+  --color-warning: #9a6700;
+  --color-severe: #bc4c00;
+  --color-caution: #d1242f;
+  --color-important: #8250df;
+}
+
+</style>
+<style>
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-note: #2f81f7;
+    --color-tip: #3fb950;
+    --color-warning: #d29922;
+    --color-severe: #db6d28;
+    --color-caution: #f85149;
+    --color-important: #a371f7;
+  }
+}
+
+</style>
+<style>
+.markdown-alert {
+  padding: 0.5rem 1rem;
+  margin-bottom: 16px;
+  color: inherit;
+  border-left: .25em solid #888;
+}
+
+.markdown-alert>:first-child {
+  margin-top: 0
+}
+
+.markdown-alert>:last-child {
+  margin-bottom: 0
+}
+
+.markdown-alert .markdown-alert-title {
+  display: flex;
+  font-weight: 500;
+  align-items: center;
+  line-height: 1
+}
+
+.markdown-alert .markdown-alert-title .octicon {
+  margin-right: 0.5rem;
+  display: inline-block;
+  overflow: visible !important;
+  vertical-align: text-bottom;
+  fill: currentColor;
+}
+
+.markdown-alert.markdown-alert-note {
+  border-left-color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-note .markdown-alert-title {
+  color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-important {
+  border-left-color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-important .markdown-alert-title {
+  color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-warning {
+  border-left-color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-warning .markdown-alert-title {
+  color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-tip {
+  border-left-color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-tip .markdown-alert-title {
+  color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-caution {
+  border-left-color: var(--color-caution);
+}
+
+.markdown-alert.markdown-alert-caution .markdown-alert-title {
+  color: var(--color-caution);
+}
+
+</style>
+        
+        </head>
+        <body class="vscode-body vscode-light">
+            <span id="markdown-mermaid" aria-hidden="true" data-config="{&quot;darkModeTheme&quot;:&quot;vscode&quot;,&quot;lightModeTheme&quot;:&quot;vscode&quot;,&quot;maxTextSize&quot;:50000,&quot;clickDrag&quot;:&quot;alt&quot;,&quot;showControls&quot;:&quot;onHoverOrFocus&quot;,&quot;resizable&quot;:true,&quot;maxHeight&quot;:&quot;&quot;}"></span>
+				<h3 id="use-case--deployment-of-narwhal"><strong>Use Case — Deployment of Narwhal</strong></h3>
+<p><strong>Prerequisites</strong></p>
+<ul>
+<li>
+<p>Proxmox VE environment</p>
+</li>
+<li>
+<p>Debian 13 LXC container</p>
+</li>
+<li>
+<p>Network connectivity between the Proxmox node and container</p>
+</li>
+<li>
+<p>Narwhal deployment files</p>
+</li>
+</ul>
+<h4 id="1-create-the-lxc-container"><strong>1. Create the LXC container</strong></h4>
+<p>Create a new LXC container in Proxmox and configure:</p>
+<ul>
+<li>
+<p>Hostname</p>
+</li>
+<li>
+<p>Root password</p>
+</li>
+<li>
+<p>Disk size</p>
+</li>
+<li>
+<p>CPU cores</p>
+</li>
+<li>
+<p>Memory</p>
+</li>
+<li>
+<p>Static IPv4 address</p>
+</li>
+</ul>
+<p>All other container settings can remain at their default values.</p>
+<p>The container uses <strong>Debian 13</strong>.</p>
+<h4 id="2-access-the-container"><strong>2. Access the container</strong></h4>
+<p>From the Proxmox host, access the newly created container:</p>
+<p><code>pct enter</code></p>
+<p>Install the required dependencies. For example:</p>
+<p><code>apt install tmux -y</code></p>
+<p>Additional dependencies should be installed here as required by the game server being deployed.</p>
+<h4 id="3-create-the-gameserver-user"><strong>3. Create the gameserver user</strong></h4>
+<p>Create the user responsible for running the game server and Narwhal.</p>
+<p>Narwhal deployments use the following user:</p>
+<p><code>gameserver</code></p>
+<p>The game server and Narwhal should be installed within this user's home directory.</p>
+<p>Optionally, copy an SSH key to the container if direct SSH access to the container is desired.</p>
+<p>The SSH key is not required for Narwhal itself. However, the API requires SSH authentication to the Proxmox node, so configuring key-based authentication prevents the API from requiring a password for each interaction.</p>
+<h4 id="4-deploy-narwhal"><strong>4. Deploy Narwhal</strong></h4>
+<p>Narwhal can be deployed using the provided <code>deploy.ps1</code> script.</p>
+<p>Before running the script, configure:</p>
+<p><code>$deployIP = &quot;&quot;</code></p>
+<p>Set this value to the IP address of the target container.</p>
+<h4 id="5-deploy-the-game-server"><strong>5. Deploy the game server</strong></h4>
+<p>Install the desired game server in the gameserver user's home directory.</p>
+<p>Narwhal should be located alongside the game server and have the necessary permissions to manage it.</p>
+<h4 id="6-configure-narwhal"><strong>6. Configure Narwhal</strong></h4>
+<p>Create the configuration file:</p>
+<p><code>/home/gameserver/mgr.env</code></p>
+<p>Configure the file according to the requirements of the deployed game server.</p>
+<h4 id="7-test-the-deployment"><strong>7. Test the deployment</strong></h4>
+<p>At this point, the deployment should be ready.</p>
+<p>Run Narwhal manually:</p>
+<p><code>./Narwhal Start</code></p>
+<p>Verify that the game server starts successfully and that Narwhal reports the expected status.</p>
+<p>**Expected Result:**Narwhal is installed and configured inside the gameserver user's home directory and can successfully start, stop, restart, and retrieve the status of the deployed game server.</p>
+
+            <script async src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script>
+            
+        </body>
+        </html>
